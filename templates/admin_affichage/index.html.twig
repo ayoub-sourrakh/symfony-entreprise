@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Affichage Contact{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {{ dump(list) }}
+            {# Affichez la liste des contacts (perso j'utiliserais les card) #}
+            <h1 class="p-3">Affichage des contacts</h1>
+            <hr>
+            {% for ligne in list %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    Par : {{ ligne.nom|capitalize }} {{ ligne.prenom|capitalize }}, le : {{ ligne.dateContact|date('d/m/Y') }}. Répondre : {{ ligne.email }}
+                </div>
+                <div class="card-body">
+                    <p>{{ ligne.message|raw }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+> symfony check:requirements -- Pour voir si tout est ok pour une installation symfony
+
+-- Se rendre dans le dossier d'installation
+> symfony server:start -- Pour lancer le site
+> symfony server:stop -- Pour arreter le site
+
+> symfony console make:controller ContactController -- Pour demander à symfony de nous créer un controller 
+    - création du controller dans src/Controller/ContactController.php 
+    - création d'un fichier de template dans templates/contact/index.twig.php
+
+-- Après avoir préparé la connexion BDD dans le fichier .env (à la racine)
+    -- DATABASE_URL="mysql://root:@127.0.0.1:3306/symfony_entreprise?serverVersion=5.7&charset=utf8mb4"
+
+> symfony console doctrine:database:create
+
+> symfony console make:entity
+    -- suivre les étapes
+
+-- Une fis l'entité créée :
+> symfony console make:migration
+> symfony console doctrine:migrations:migrate
+
+
+-- Pour chamnger les form_row : faire un template templates/form/fields.html.twig écrire le besoin
+-- Puiis aller dans config/packages/twig.yaml et rajouter la ligne suivante pour prendre en  compte ce template :

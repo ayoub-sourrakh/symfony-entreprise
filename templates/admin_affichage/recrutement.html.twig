@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Affichage Recrutement{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {{ dump(list) }}
+            {# Affichez la liste des contacts (perso j'utiliserais les card) #}
+            <h1 class="p-3">Affichage des demande de Recrutement</h1>
+            <hr>
+            <table class="table">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Poste</th>
+                    <th>Date recrutement</th>
+                    <th>Cv</th>
+                </tr>
+            {% for ligne in list %}
+                <tr>
+                    <td>{{ ligne.nom }}</td>
+                    <td>{{ ligne.prenom }}</td>
+                    <td>{{ ligne.poste }}</td>
+                    <td>{{ ligne.dateRecrutement|date('d/m/Y') }}</td>
+                    <td><a href="{{ asset('cv') }}/{{ligne.cv}}">CV</a></td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

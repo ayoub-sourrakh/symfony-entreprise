@@ -1,0 +1,58 @@
+> Faire un controller : AdminServiceController
+
+> créer une entite 
+    - Service 
+        - nomService    string 
+
+> Créer un formType
+
+> Dans le controller :
+    - Afficher le formulaire via la route (/admin/service)
+    - Gérer l'enregistrement (il faut vérifier avant si le service est déjà enregistré)
+        - Si service existe déjà : un message flash en front
+        - Sinon on enregistre et un message de  validation
+
+> Afficher les différents services dans un tableau html soit sur la même page soit sur une nouvelle route 
+
+> Enregistrer qq services 
+
+> ----------------------------------------------
+> ----------------------------------------------
+> ----------------------------------------------
+
+> Faire un controller : AdminEmployeController
+
+> créer une entite 
+    - Employe 
+        - nom           string 
+        - prenom        string 
+        - sexe          string 
+        - dateEmbauche  Date
+        - salaire       float 
+        - service       ? pour voir les type disponibles : ManyToOne
+                        => on devra préciser l'entité liée à cette relation
+
+Pour avoir les services proposés dans  le select du champ service :
+    Dans le FormType appeler l'entité : 
+    use App\Entity\Service;
+    use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+---
+ ->add('service', EntityType::class, [
+    'class' => Service::class,
+    'choice_label' => 'nomService',
+    'attr' => [
+        'class' => 'form-select'
+    ],
+    'constraints' => [
+        new Assert\NotBlank(['message' => 'Le service ne doit pas être vide']), 
+    ],
+])
+---
+
+> Créer un formType
+
+> Dans le controller :
+    - Afficher le formulaire via la route (/admin/employe)
+    - Gérer l'enregistrement 
+
+> Créer une nouvelle route pour l'affichage en table html

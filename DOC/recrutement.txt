@@ -1,0 +1,26 @@
+> faire un controller : RecrutementController.php 
+> Créer une entité Recrutement 
+    > nom               string
+    > prenom            string
+    > poste             string
+    > cv                string
+    > message           text
+    > dateRecrutement   datetime
+
+> symfony console make:form RecrutementType
+    > suivre les étapes
+        > lier le form à l'entité Recrutement
+
+    > aller dans src/Form/...
+
+    > nom               => ne doit pas être vide
+    > prenom            => ne doit pas être vide
+    > poste             => ne doit pas être vide (gérer les options)
+    > cv                => ...
+    > message           => ne doit pas être vide
+    > dateRecrutement   => à supprimer du form
+
+    > Rajouter également un bouton submit
+
+
+> Faire un affichage des recrutement sous forme de tableau html (route : /admin/affichage_recrutement) > le cv doit être dans un lien pour l'afficher ou le télécharger

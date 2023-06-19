@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employé{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="p-3">Employé</h1>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6 mx-auto">
+                    <div>
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {{ form(form) }}
+                </div>
+                <div class="col-sm-6 mx-auto">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Sexe</th>
+                            <th>Service</th>
+                            <th>Salaire</th>
+                            <th>Date embauche</th>
+                        </tr>
+                    {% for ligne in list %}
+                        <tr>
+                            <td>{{ ligne.id }}</td>
+                            <td>{{ ligne.nom }}</td>
+                            <td>{{ ligne.prenom }}</td>
+                            <td>{{ ligne.sexe }}</td>
+                            <td>{{ ligne.service.nomService }}</td>
+                            <td>{{ ligne.salaire }}</td>
+                            <td>{{ ligne.dateEmbauche|date('d/m/Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

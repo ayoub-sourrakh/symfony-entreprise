@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="p-3">Nous contacter</h1>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6 mx-auto">
+                    <div>
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% endfor %}
+                        {% for message in app.flashes('error') %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {{ form(form) }}
+                </div>
+                <div class="col-sm-6 mx-auto">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                        </tr>
+                    {% for ligne in list %}
+                        <tr>
+                            <td>{{ ligne.id }}</td>
+                            <td>{{ ligne.nomService }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
